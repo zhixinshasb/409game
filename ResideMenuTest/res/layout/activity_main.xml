@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+   		 xmlns:android="http://schemas.android.com/apk/res/android"
+   		 android:layout_width="match_parent"
+         android:layout_height="match_parent" 
+         android:background="@android:color/white"
+         android:orientation="vertical"> 
+        <ImageView
+         android:layout_width="match_parent"
+         android:layout_height="3dp"
+         android:background="#2ea3fe"/>
+		<FrameLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:id="@+id/layout_top">
+		   
+			<Button
+			    android:layout_width="28dp"
+			    android:layout_height="28dp"
+			    android:background="@drawable/menu_selector"
+			    android:layout_gravity="left|center_vertical"
+			    android:layout_marginLeft="10dp"
+			    android:id="@+id/left_button"/>
+			<TextView 
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textSize="24sp"
+			    android:padding="7dp"
+			    android:textColor="#999999"
+			    android:layout_gravity="center"
+			    android:text = "DEMO"
+			    />
+			<Button 
+			    android:layout_width="28dp"
+			    android:layout_height="28dp"
+			    android:background="@drawable/setting"
+			    android:layout_gravity="right|center_vertical"
+			    android:layout_marginRight="10dp"
+			    android:id="@+id/setting"/>
+		</FrameLayout>
+		<ImageView
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#ebebeb"/>
+		 <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:id="@+id/main_fragment">
+    </FrameLayout>
+</LinearLayout>
