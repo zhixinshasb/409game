@@ -482,7 +482,6 @@ public class ResideMenu extends FrameLayout{
             menuAnimationSet.addAnimation(menuTraslate);
             target.startAnimation(menuAnimationSet);
             /************************************************/
-        	alphaAnimation.setDuration(500);
         }
         else {
         	  /************************************************/
@@ -496,9 +495,8 @@ public class ResideMenu extends FrameLayout{
             menuAnimationSet.addAnimation(menuTraslate);
             target.startAnimation(menuAnimationSet);
             /************************************************/
-        	alphaAnimation.setDuration(100);
         }
-        
+    	alphaAnimation.setDuration(250);
         return alphaAnimation;
     }
 
