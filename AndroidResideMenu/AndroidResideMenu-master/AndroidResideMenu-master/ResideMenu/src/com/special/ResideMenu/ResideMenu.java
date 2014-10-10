@@ -14,7 +14,10 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -320,20 +323,12 @@ public class ResideMenu extends FrameLayout{
         AnimatorSet alpha_menu = buildMenuAnimation(scrollViewMenu, 0.0f);
         /*****************创建用户信息动画*********************/
         AnimatorSet alpha_userInfo = buildMenuAnimation(userInfo, 0.0f);
-        AnimatorSet alpha_userInfoPhoto = buildMenuAnimation(userPhoto, 0.0f);
-        AnimatorSet alpha_userInfoId = buildMenuAnimation(userName, 0.0f);
-        AnimatorSet alpha_userInfoLevel = buildMenuAnimation(userLever, 0.0f);
-        AnimatorSet alpha_userInfoGold = buildMenuAnimation(userGoald, 0.0f);
         /************************************************/
         scaleUp_activity.addListener(animationListener);
         scaleUp_activity.playTogether(scaleUp_shadow);
         scaleUp_activity.playTogether(alpha_menu);
         /************* 添加用户信息动画 *********************/
 		scaleUp_activity.playTogether(alpha_userInfo);
-		scaleUp_activity.playTogether(alpha_userInfoId);
-		scaleUp_activity.playTogether(alpha_userInfoPhoto);
-		scaleUp_activity.playTogether(alpha_userInfoLevel);
-		scaleUp_activity.playTogether(alpha_userInfoGold);
         /********************************************/
         scaleUp_activity.start();
     }
@@ -468,17 +463,40 @@ public class ResideMenu extends FrameLayout{
 
     private AnimatorSet buildMenuAnimation(View target, float alpha){
 
+        
+      
         AnimatorSet alphaAnimation = new AnimatorSet();
         alphaAnimation.playTogether(
                 ObjectAnimator.ofFloat(target, "alpha", alpha)
         );
-
         
         if(isOpened) {
+        	  /************************************************/
+            AnimationSet menuAnimationSet = new AnimationSet(true);
+            TranslateAnimation menuTraslate = new TranslateAnimation(
+            		Animation.RELATIVE_TO_SELF,-1.0f,
+            		Animation.RELATIVE_TO_SELF,0.0f, 
+            		Animation.RELATIVE_TO_SELF, 0.0f, 
+            		Animation.RELATIVE_TO_SELF, 0.0f);
+            menuTraslate.setDuration(250);
+            menuAnimationSet.addAnimation(menuTraslate);
+            target.startAnimation(menuAnimationSet);
+            /************************************************/
         	alphaAnimation.setDuration(500);
         }
-        else {	alphaAnimation.setDuration(100);
-        
+        else {
+        	  /************************************************/
+            AnimationSet menuAnimationSet = new AnimationSet(true);
+            TranslateAnimation menuTraslate = new TranslateAnimation(
+            		Animation.RELATIVE_TO_SELF,0.0f,
+            		Animation.RELATIVE_TO_SELF,-1.0f, 
+            		Animation.RELATIVE_TO_SELF, 0.0f, 
+            		Animation.RELATIVE_TO_SELF, 0.0f);
+            menuTraslate.setDuration(250);
+            menuAnimationSet.addAnimation(menuTraslate);
+            target.startAnimation(menuAnimationSet);
+            /************************************************/
+        	alphaAnimation.setDuration(100);
         }
         
         return alphaAnimation;
